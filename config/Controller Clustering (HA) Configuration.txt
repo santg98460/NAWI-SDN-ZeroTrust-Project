@@ -1,0 +1,41 @@
+# On Controller Node 1 (Toronto - 10.60.100.10)
+cat > configuration/initial/akka.conf << EOF
+akka {
+  cluster {
+    seed-nodes = [
+      "akka://opendaylight-cluster@10.60.100.10:2550",
+      "akka://opendaylight-cluster@10.60.100.11:2550",
+      "akka://opendaylight-cluster@10.60.100.12:2550"
+    ]
+    roles = ["member"]
+  }
+}
+EOF
+
+# On Controller Node 2 (Markham - 10.60.100.11)
+cat > configuration/initial/akka.conf << EOF
+akka {
+  cluster {
+    seed-nodes = [
+      "akka://opendaylight-cluster@10.60.100.10:2550",
+      "akka://opendaylight-cluster@10.60.100.11:2550",
+      "akka://opendaylight-cluster@10.60.100.12:2550"
+    ]
+    roles = ["member"]
+  }
+}
+EOF
+
+# On Controller Node 3 (Dallas - 10.60.100.12)
+cat > configuration/initial/akka.conf << EOF
+akka {
+  cluster {
+    seed-nodes = [
+      "akka://opendaylight-cluster@10.60.100.10:2550",
+      "akka://opendaylight-cluster@10.60.100.11:2550",
+      "akka://opendaylight-cluster@10.60.100.12:2550"
+    ]
+    roles = ["member"]
+  }
+}
+EOF

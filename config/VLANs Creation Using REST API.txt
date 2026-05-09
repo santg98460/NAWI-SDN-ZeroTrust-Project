@@ -1,0 +1,128 @@
+# Base URL for OpenDaylight REST API
+ODL_URL="http://10.60.100.10:8181"   ## On Controller Node 1 (Toronto - 10.60.100.10)
+ODL_AUTH="admin:admin"
+
+# ============================================
+# CREATE VLAN STRUCTURE
+# ============================================
+
+# Create Virtual Tenant Network (VTN) Manager
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-tenant
+
+# Create Virtual Bridge for each VLAN
+# VLAN 10 - Sales & Marketing
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN10_Sales_Marketing"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-bridge
+
+# VLAN 20 - Customer Service
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN20_Customer_Service"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-bridge
+
+# VLAN 30 - Voice
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN30_Voice"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-bridge
+
+# VLAN 40 - Data Systems
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN40_Data_Systems"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-bridge
+
+# VLAN 50 - Wireless
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN50_Wireless"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-bridge
+
+# VLAN 60 - Data Backup
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN60_Data_Backup"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-bridge
+
+# VLAN 70 - Management (HR/Accounting)
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN70_Management"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-bridge
+
+# VLAN 80 - Manufacturing (Regions ONLY)
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN80_Manufacturing"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-bridge
+
+# VLAN 90 - Distribution (Regions ONLY)
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN90_Distribution"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-bridge
+
+# VLAN 99 - Native/Management
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN99_Native_Mgmt"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-bridge

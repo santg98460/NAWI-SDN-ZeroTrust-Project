@@ -1,0 +1,87 @@
+# ============================================
+# CONFIGURE VLAN INTERFACES (SVIs)
+# ============================================
+
+# Set VLAN 10 IP Gateway (Sales & Marketing)
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN10_Sales_Marketing",
+      "cidr": "10.10.10.1/24"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-vbridge-interface
+
+# Set VLAN 20 IP Gateway (Customer Service)
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN20_Customer_Service",
+      "cidr": "10.10.20.1/24"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-vbridge-interface
+
+# Set VLAN 30 IP Gateway (Voice)
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN30_Voice",
+      "cidr": "10.10.30.1/24"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-vbridge-interface
+
+# Set VLAN 40 IP Gateway (Data Systems)
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN40_Data_Systems",
+      "cidr": "10.10.40.1/24"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-vbridge-interface
+
+# Set VLAN 50 IP Gateway (Wireless)
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN50_Wireless",
+      "cidr": "10.10.50.1/24"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-vbridge-interface
+
+# Set VLAN 60 IP Gateway (Data Backup)
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN60_Data_Backup",
+      "cidr": "10.10.60.1/24"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:add-vbridge-interface
+
+# Set VLAN 70 IP Gateway (Management)
+curl -u $ODL_AUTH -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "tenant-name": "NAWI",
+      "bridge-name": "VLAN70_Management",
+      "cidr": "10.10.70.1/24"
+    }
+  }' \
+  $ODL_URL/restconf/operations/vtn:ad

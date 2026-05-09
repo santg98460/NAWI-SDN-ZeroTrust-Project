@@ -1,0 +1,19 @@
+# Dallas Core Switch - Pre-configured for DR (inactive until needed)
+
+# Create isolated VRF for Canadian DR data
+vrf definition CANADA_DR
+ rd 65002:100
+ route-target export 65002:100
+ route-target import 65002:100
+
+# Create isolated VRF for US DR data (in Canada)
+vrf definition USA_DR
+ rd 65001:200
+ route-target export 65001:200
+ route-target import 65001:200
+
+# Configure access lists - BLOCK production access to DR VRFs
+ip access-list extended BLOCK_DR_ACCESS
+ deny ip any vrf CANADA_DR
+ deny ip any vrf USA_DR
+ permit ip any any

@@ -1,0 +1,28 @@
+# OpenDaylight SDN Controller - DR Flow Rules
+
+# NORMAL OPERATIONS - Block all cross-border access
+Rule 1 (Priority 1000):
+    match: src_region=CANADA, dst_region=USA, dr_mode=INACTIVE
+    action: DROP
+
+Rule 2 (Priority 1000):
+    match: src_region=USA, dst_region=CANADA, dr_mode=INACTIVE
+    action: DROP
+
+# DR MODE - Allow temporary cross-border access (ISOLATED VRFs only)
+Rule 3 (Priority 900):
+    match: dr_mode=ACTIVE, vrf=CANADA_DR, authenticated=TRUE
+    action: ALLOW (log only)
+
+Rule 4 (Priority 900):
+    match: dr_mode=ACTIVE, vrf=USA_DR, authenticated=TRUE
+    action: ALLOW (log only)
+
+# DR MODE - Still block production cross-border access
+Rule 5 (Priority 950):
+    match: dr_mode=ACTIVE, vrf=PRODUCTION, src_region=CANADA, dst_region=USA
+    action: DROP
+
+Rule 6 (Priority 950):
+    match: dr_mode=ACTIVE, vrf=PRODUCTION, src_region=USA, dst_region=CANADA
+    action: DROP
